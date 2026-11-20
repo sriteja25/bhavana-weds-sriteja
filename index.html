@@ -93,7 +93,8 @@ button{font:inherit}
 .dress b{color:var(--ink)}
 .tl{list-style:none;margin:0;padding:6px 0}
 .tl li{display:grid;grid-template-columns:84px minmax(0,1fr);gap:10px;padding:10px 16px}
-.tl .tm{font-size:13.5px;font-weight:700;font-variant-numeric:tabular-nums}
+.tl .tm{font-size:13.5px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tl .tm small{display:block;font-size:12px;font-weight:600;color:var(--ink-soft)}
 .tl .nm{font-weight:700}
 .tl .ds{font-size:13px;color:var(--ink-soft)}
 .tl li.past{opacity:.45}
@@ -120,9 +121,10 @@ button{font:inherit}
 .help .p .num{font-weight:700;font-size:14px;color:var(--plum);white-space:nowrap;user-select:all;text-decoration:none}
 
 /* Photos */
-.story{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.story img{width:100%;height:170px;object-fit:cover;border-radius:14px;display:block}
-.story img.big{grid-column:1/-1;height:210px}
+.story{display:grid;gap:8px}
+.story img{width:100%;height:auto;border-radius:14px;display:block}
+.story .pair{display:flex;gap:8px;align-items:flex-start}
+.story .pair img{min-width:0}
 
 .foot{text-align:center;padding:14px 0 6px}
 .foot .s{font-family:var(--f-script);font-size:36px;color:var(--plum);line-height:1.1}
@@ -181,8 +183,6 @@ button{font:inherit}
 
     <div class="sh"><h2>Good to know</h2></div>
     <section class="tiles">
-      <div class="tile"><div class="k">Check-in</div><div class="v" id="checkin"></div><div class="s">Rooms ready at the reception</div></div>
-      <div class="tile"><div class="k">Check-out</div><div class="v" id="checkout"></div><div class="s">Please leave keys at the help desk</div></div>
       <div class="tile wide"><div class="k">Venue</div><div class="v">Noma Kalyana Vedika</div><a class="mini" href="https://www.google.com/maps/search/?api=1&amp;query=Noma%20Kalyana%20Vedika" target="_blank" rel="noopener">Open in Google Maps</a></div>
       <div class="tile wide"><div class="k">Share your photos</div><div class="v">Add your pictures to our album</div><div class="s">Every candid helps. We'll treasure them after the wedding.</div><a class="mini" id="album" href="#" target="_blank" rel="noopener">Open shared album</a></div>
     </section>
@@ -193,8 +193,10 @@ button{font:inherit}
     <div class="sh"><h2>Our story so far</h2></div>
     <section class="story">
       <img class="big" src="img/rings.jpg" alt="Bhavana and Sri Teja at their engagement, with the rings">
-      <img src="img/couple.jpg" alt="Bhavana and Sri Teja at the engagement">
-      <img src="img/casual.jpg" alt="Bhavana and Sri Teja together">
+      <div class="pair">
+        <img src="img/couple.jpg" alt="Bhavana and Sri Teja at the engagement" style="flex:665 1 0">
+        <img src="img/casual.jpg" alt="Bhavana and Sri Teja together" style="flex:750 1 0">
+      </div>
     </section>
 
     <footer class="foot">
@@ -209,8 +211,6 @@ button{font:inherit}
 /* ============ EDIT THESE DETAILS ============ */
 var CONFIG = {
   album: "https://photos.app.goo.gl/D9sanYVk11qiATan9",
-  checkin: "Wed, 2 Dec · 3:30 PM",
-  checkout: "Thu, 3 Dec · 2:00 PM",
   contacts: [              // name, role, phone numbers (leave the list empty if not known yet)
     ["Ramesh", "Room supervisor", []],
     ["Satyanarayana", "Groom's family", ["+91 94412 84866", "+91 91006 05150"]]
@@ -240,8 +240,6 @@ var CONFIG = {
   applyRoom();
 
   // Details
-  $("checkin").textContent = CONFIG.checkin;
-  $("checkout").textContent = CONFIG.checkout;
   if (CONFIG.album) $("album").href = CONFIG.album;
   else $("album").addEventListener("click", function(e){ e.preventDefault(); });
   CONFIG.contacts.forEach(function(c){
@@ -258,15 +256,15 @@ var CONFIG = {
   // Events, minutes after 2 Dec 2026 00:00 IST
   function m(day,hh,mm){ return (day-2)*1440 + hh*60 + mm; }
   var EVENTS = [
-    {d:2, s:m(2,15,30), e:m(2,17,0),  t:"3:30 PM",  n:"Check-in", ds:"Rooms ready, welcome at the reception"},
-    {d:2, s:m(2,17,0),  e:m(2,19,0),  t:"5:00 – 7:00 PM", n:"Edurukollu", ds:"Welcoming the groom's family"},
-    {d:2, s:m(2,19,30), e:m(2,23,30), t:"7:30 – 11:30 PM", n:"Sangeeth", ds:"Music, dance and performances"},
-    {d:2, s:m(2,20,0),  e:m(2,22,30), t:"8:00 PM", n:"Dinner", ds:"Served during the Sangeeth", side:true},
-    {d:3, s:m(3,5,0),   e:m(3,7,30),  t:"5:00 AM", n:"Snathakam", ds:"The groom's ritual before the wedding"},
-    {d:3, s:m(3,7,30),  e:m(3,8,40),  t:"7:30 AM", n:"Breakfast", ds:"Dining hall"},
-    {d:3, s:m(3,8,40),  e:m(3,11,45), t:"8:56 AM", n:"Sumuhurtham", ds:"The wedding", key:true},
-    {d:3, s:m(3,12,0),  e:m(3,14,30), t:"12:00 PM", n:"Lunch", ds:"Dining hall"},
-    {d:3, s:m(3,14,0),  e:m(3,14,1),  t:"2:00 PM", n:"Check-out", ds:"Please leave your room keys at the help desk"}
+    {d:2, s:m(2,15,30), e:m(2,17,0),  t:"3:30 PM", n:"Check-in", ds:"Settle in, relax and get ready for the evening"},
+    {d:2, s:m(2,17,0),  e:m(2,19,0),  t:"5:00 PM", till:"7:00 PM", n:"Edurukollu", ds:"A traditional ceremony welcoming the groom's family"},
+    {d:2, s:m(2,19,30), e:m(2,23,30), t:"7:30 PM", till:"11:30 PM", n:"Sangeeth", ds:"Music, dance and performances"},
+    {d:2, s:m(2,20,0),  e:m(2,22,30), t:"8:00 PM", n:"Dinner", ds:"Served in the dinner hall downstairs", side:true},
+    {d:3, s:m(3,5,0),   e:m(3,7,30),  t:"5:00 AM", n:"Snathakam", ds:"Followed by Kashi Yatra"},
+    {d:3, s:m(3,7,30),  e:m(3,8,40),  t:"7:30 AM", n:"Breakfast", ds:"A warm breakfast in the dinner hall downstairs"},
+    {d:3, s:m(3,8,40),  e:m(3,11,45), t:"8:56 AM", n:"Sumuhurtham", ds:"The wedding. Your blessings mean everything to us", key:true},
+    {d:3, s:m(3,12,0),  e:m(3,14,0),  t:"12:00 PM", n:"Lunch", ds:"Wedding lunch in the dinner hall downstairs"},
+    {d:3, s:m(3,14,0),  e:m(3,14,1),  t:"2:00 PM", n:"Check-out", ds:"Thank you for being with us. Please reach home safely"}
   ];
   var MUH = m(3,8,56);
   var BASE = Date.UTC(2026,11,1,18,30); // 2 Dec 2026 00:00 IST
@@ -295,12 +293,12 @@ var CONFIG = {
       lbl.textContent = "Happening now"; lbl.className = "pulse";
       $("now-ev").textContent = cur.n;
       var din = EVENTS[3];
-      $("now-when").textContent = cur.t + (cur.n === "Sangeeth" && now >= din.s && now < din.e ? " · Dinner is being served" : "");
+      $("now-when").textContent = cur.t + (cur.till ? " – " + cur.till : "") + (cur.n === "Sangeeth" && now >= din.s && now < din.e ? " · Dinner is being served" : "");
     } else if (up[0]) {
       var u = up.shift();
       lbl.textContent = "Up next"; lbl.className = "";
       $("now-ev").textContent = u.n;
-      $("now-when").textContent = (u.d === 2 ? "Wed, 2 Dec" : "Thu, 3 Dec") + " · " + u.t + " · in " + span(u.s - now);
+      $("now-when").textContent = (u.d === 2 ? "Wed, 2 Dec" : "Thu, 3 Dec") + " · " + u.t + (u.till ? " – " + u.till : "") + " · in " + span(u.s - now);
     } else {
       lbl.textContent = "Thank you"; lbl.className = "";
       $("now-ev").textContent = "Thank you for coming";
@@ -336,7 +334,8 @@ var CONFIG = {
         if (e.key) cls.push("key");
         li.className = cls.join(" ");
         li.innerHTML = '<span class="tm"></span><div><div class="nm"></div><div class="ds"></div></div>';
-        li.querySelector(".tm").textContent = e.t.replace(" – ", "–");
+        li.querySelector(".tm").textContent = e.t;
+        if (e.till) { var tl = document.createElement("small"); tl.textContent = "till " + e.till; li.querySelector(".tm").appendChild(tl); }
         li.querySelector(".nm").textContent = e.n;
         li.querySelector(".ds").textContent = e.ds;
         ol.appendChild(li);
