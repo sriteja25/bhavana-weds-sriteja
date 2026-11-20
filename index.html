@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Bhavana &amp; Sri Teja</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Mulish:wght@400;600;700&family=Noto+Serif+Telugu:wght@500;700&display=swap">
+<style>
+/* Layout: single centred column sized for phones (guests scan with their phone); soft paper ground around it on larger screens. One "invitation paper" look, matching the printed invite. */
+:root{
+  --paper:#FBF6EC; --paper-2:#F4EADB; --card:#FFFDF8; --ground:#F1E6D6;
+  --ink:#2B1620; --ink-soft:#6B5560;
+  --plum:#5B1F4A; --plum-deep:#3E1232; --rose:#C9587A; --rose-soft:#F6DCE4;
+  --gold:#B07F2E; --gold-soft:#EBD9B4; --leaf:#4E7A4A; --leaf-soft:#E2ECDD;
+  --wa:#1F8F4E; --line:#E3D4C0;
+  --f-script:"Great Vibes","Brush Script MT",cursive;
+  --f-display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --f-body:"Mulish",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-telugu:"Noto Serif Telugu","Gautami","Telugu Sangam MN",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15;font-weight:600}
+p{margin:0}
+a{color:var(--plum)}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+
+.page{max-width:520px;margin:0 auto;background:var(--paper);min-height:100%;box-shadow:0 0 0 1px var(--line),0 30px 80px -40px #3e123240}
+
+/* Hero */
+.hero{position:relative;height:min(78vh,560px);min-height:420px;overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#2b162033 0%,#00000000 30%,#00000000 45%,#2b1620e6 100%)}
+.hero .cap{position:absolute;left:0;right:0;bottom:48px;z-index:1;text-align:center;color:#FFF7EC;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+.hero .te{font-family:var(--f-telugu);font-size:17px;letter-spacing:.04em;color:var(--gold-soft)}
+.hero h1{font-family:var(--f-script);font-weight:400;font-size:clamp(46px,13vw,60px);line-height:1.05;margin-top:2px}
+.hero .sub{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.92;margin-top:8px}
+
+.body{padding-block:0 32px;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));display:grid;gap:22px}
+
+.orn{display:block;width:96px;height:20px;margin:0 auto}
+
+/* Welcome */
+.welcome{position:relative;margin-top:-30px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 20px 22px;text-align:center;box-shadow:0 14px 30px -20px #3e123266}
+.welcome .hi{font-family:var(--f-display);font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:6px}
+.welcome .who{font-family:var(--f-script);font-size:clamp(34px,10vw,42px);color:var(--plum);line-height:1.15;margin-top:4px}
+.welcome .msg{font-family:var(--f-display);font-size:19px;line-height:1.4;color:var(--ink);margin-top:12px}
+.welcome .sm{color:var(--ink-soft);font-size:14px;margin-top:10px}
+.room-chip{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:var(--plum);color:#FBEFE3;border-radius:99px;padding:6px 16px 6px 6px;font-size:13.5px}
+.room-chip b{background:var(--gold-soft);color:var(--plum-deep);border-radius:99px;padding:3px 12px;font-family:var(--f-display);font-size:18px;line-height:1.2}
+
+/* Now / next */
+.now{border-radius:18px;border:1px solid var(--line);background:var(--card);overflow:hidden}
+.now .head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px;background:var(--paper-2);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-soft)}
+.pulse{display:inline-flex;align-items:center;gap:6px;color:var(--rose)}
+.pulse::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--rose);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 #c9587a88}80%{box-shadow:0 0 0 8px #c9587a00}100%{box-shadow:0 0 0 0 #c9587a00}}
+@media (prefers-reduced-motion:reduce){.pulse::before{animation:none}}
+.now .in{padding:16px}
+.now .ev{font-family:var(--f-display);font-size:28px;font-weight:700;color:var(--plum);line-height:1.1}
+.now .when{font-size:14px;color:var(--ink-soft);margin-top:4px}
+.now .next{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-size:14.5px}
+.now .next b{color:var(--plum)}
+
+/* Muhurtham */
+.muh{text-align:center;border-radius:18px;padding:20px 16px;background:linear-gradient(160deg,#FFF3DC,#F7E1C2);border:1px solid var(--gold-soft)}
+.muh .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.muh .t{font-family:var(--f-display);font-size:32px;font-weight:700;color:var(--plum-deep);line-height:1.1;margin-top:4px}
+.cd{display:flex;justify-content:center;gap:8px;margin-top:12px}
+.cd div{min-width:64px;background:var(--card);border:1px solid var(--gold-soft);border-radius:12px;padding:8px 4px}
+.cd b{display:block;font-family:var(--f-display);font-size:28px;line-height:1;color:var(--plum);font-variant-numeric:tabular-nums}
+.cd span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.muh p{font-size:13.5px;color:var(--ink-soft);margin-top:12px}
+
+/* WhatsApp */
+.wa{border-radius:18px;background:var(--leaf-soft);border:1px solid #c7dcc0;padding:18px}
+.wa h2{font-size:24px;color:var(--leaf)}
+.wa p{font-size:14.5px;color:var(--ink-soft);margin-top:4px}
+.wa-btn{margin-top:14px;width:100%;border-radius:12px;padding:14px;background:var(--wa);color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none}
+.wa-btn svg{width:22px;height:22px;fill:currentColor}
+
+/* Section heads */
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:6px}
+.sh h2{font-size:28px;color:var(--plum)}
+.sh span{font-size:12px;color:var(--ink-soft)}
+
+/* Schedule */
+.day{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.day .dh{padding:12px 16px}
+.day .dh b{display:block;font-family:var(--f-display);font-size:21px;line-height:1.2}
+.day .dh span{font-size:12.5px;font-weight:600;letter-spacing:.04em}
+.d2 .dh{background:#F8DDEB;color:#7A1F5A}
+.d3 .dh{background:#F9E1D2;color:#8A3B1E}
+.dress{padding:9px 16px;font-size:13px;color:var(--ink-soft);border-bottom:1px solid var(--line);background:var(--paper)}
+.dress b{color:var(--ink)}
+.tl{list-style:none;margin:0;padding:6px 0}
+.tl li{display:grid;grid-template-columns:84px minmax(0,1fr);gap:10px;padding:10px 16px}
+.tl .tm{font-size:13.5px;font-weight:700;font-variant-numeric:tabular-nums}
+.tl .nm{font-weight:700}
+.tl .ds{font-size:13px;color:var(--ink-soft)}
+.tl li.past{opacity:.45}
+.tl li.live{background:var(--rose-soft)}
+.tl li.live .nm::after{content:"Now";margin-left:8px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:var(--rose);color:#fff;padding:2px 7px;border-radius:99px;vertical-align:2px}
+.tl li.key .nm{color:var(--plum)}
+
+/* Tiles */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px;min-width:0}
+.tile .k{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.tile .v{font-weight:700;margin-top:3px;font-size:15px;overflow-wrap:anywhere}
+.tile .s{font-size:13px;color:var(--ink-soft)}
+.tile.wide{grid-column:1/-1}
+.mini{margin-top:8px;display:inline-block;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:5px 11px;font-size:12.5px;font-weight:700;color:var(--plum);cursor:pointer;text-decoration:none}
+
+/* Help */
+.help{display:grid;gap:8px}
+.help .p{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 14px}
+.help .p b{display:block;font-size:14.5px}
+.help .p span{font-size:13px;color:var(--ink-soft)}
+.help .p .num{font-weight:700;font-size:14px;color:var(--plum);white-space:nowrap;user-select:all;text-decoration:none}
+
+/* Photos */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.story img{width:100%;height:170px;object-fit:cover;border-radius:14px;display:block}
+.story img.big{grid-column:1/-1;height:210px}
+
+.foot{text-align:center;padding:14px 0 6px}
+.foot .s{font-family:var(--f-script);font-size:36px;color:var(--plum);line-height:1.1}
+.foot p{font-size:13px;color:var(--ink-soft);margin-top:4px}
+.foot .te{font-family:var(--f-telugu);color:var(--gold);font-size:15px;margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header class="hero">
+    <img src="img/stage.jpg" alt="Bhavana and Sri Teja">
+    <div class="cap">
+      <div class="te">శుభ స్వాగతం</div>
+      <h1>Bhavana &amp; Sri Teja</h1>
+      <div class="sub">Pelli Sandadi · 2 – 3 December 2026</div>
+    </div>
+  </header>
+
+  <main class="body">
+    <section class="welcome" aria-labelledby="who">
+      <svg class="orn" viewBox="0 0 96 20" aria-hidden="true"><path d="M2 10h30M64 10h30" stroke="#B07F2E" stroke-width="1" fill="none"/><path d="M48 2c3.5 3.5 3.5 12.5 0 16c-3.5-3.5-3.5-12.5 0-16Z" fill="#C9587A"/><path d="M48 10c5-6 11-6 13-3.5c-2.5 2.5-8.5 4.5-13 3.5Zm0 0c-5-6-11-6-13-3.5c2.5 2.5 8.5 4.5 13 3.5Z" fill="#B07F2E"/></svg>
+      <div class="hi">Welcome</div>
+      <div class="who" id="who">Our dear family &amp; friends</div>
+      <p class="msg">Thank you for travelling to be with us. Your presence and blessings mean the world to our families.</p>
+      <div class="room-chip" id="room-chip" hidden><b id="room-no"></b><span>Your room at Noma Kalyana Vedika</span></div>
+    </section>
+
+    <section class="now" aria-live="polite" aria-label="What's happening">
+      <div class="head"><span id="now-lbl">Up next</span><span id="now-clock"></span></div>
+      <div class="in">
+        <div class="ev" id="now-ev"></div>
+        <div class="when" id="now-when"></div>
+        <div class="next" id="now-next"></div>
+      </div>
+    </section>
+
+    <section class="muh" aria-label="Muhurtham">
+      <div class="lbl">Sumuhurtham</div>
+      <div class="t">Thursday, 3 December · 8:56 AM</div>
+      <div class="cd" id="cd"></div>
+      <p id="muh-note" hidden></p>
+    </section>
+
+    <section class="wa" aria-labelledby="wa-h">
+      <h2 id="wa-h">Get updates on WhatsApp</h2>
+      <p>A short reminder before each event and any change in timing. Nothing else, and it ends after the wedding.</p>
+      <a class="wa-btn" id="wa-link" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+        Join on WhatsApp
+      </a>
+    </section>
+
+    <div class="sh"><h2>Schedule</h2><span>All times IST</span></div>
+    <section class="day d2">
+      <div class="dh"><b>Wednesday, 2 December</b><span>Edurukollu &amp; Sangeeth</span></div>
+      <div class="dress">Dress code: <b>a mix of modern &amp; traditional, shiny and sparkling</b></div>
+      <ol class="tl" id="tl-2"></ol>
+    </section>
+    <section class="day d3">
+      <div class="dh"><b>Thursday, 3 December</b><span>Snathakam &amp; Wedding</span></div>
+      <div class="dress">Dress code: <b>traditional</b></div>
+      <ol class="tl" id="tl-3"></ol>
+    </section>
+
+    <div class="sh"><h2>Good to know</h2></div>
+    <section class="tiles">
+      <div class="tile"><div class="k">Wi-Fi</div><div class="v" id="wifi-name"></div><div class="s">Password: <span id="wifi-pass"></span></div><button class="mini" type="button" id="wifi-copy">Copy password</button></div>
+      <div class="tile"><div class="k">Check-in</div><div class="v" id="checkin"></div><div class="s">Rooms ready at the reception</div></div>
+      <div class="tile"><div class="k">Check-out</div><div class="v" id="checkout"></div><div class="s">Please leave keys at the help desk</div></div>
+      <div class="tile wide"><div class="k">Venue</div><div class="v">Noma Kalyana Vedika</div><a class="mini" href="https://www.google.com/maps/search/?api=1&amp;query=Noma%20Kalyana%20Vedika" target="_blank" rel="noopener">Open in Google Maps</a></div>
+      <div class="tile wide"><div class="k">Share your photos</div><div class="v">Add your pictures to our album</div><div class="s">Every candid helps. We'll treasure them after the wedding.</div><a class="mini" id="album" href="#" target="_blank" rel="noopener">Open shared album</a></div>
+    </section>
+
+    <div class="sh"><h2>Need anything?</h2></div>
+    <section class="help" id="help"></section>
+
+    <div class="sh"><h2>Our story so far</h2></div>
+    <section class="story">
+      <img class="big" src="img/rings.jpg" alt="Bhavana and Sri Teja at their engagement, with the rings">
+      <img src="img/couple.jpg" alt="Bhavana and Sri Teja at the engagement">
+      <img src="img/casual.jpg" alt="Bhavana and Sri Teja together">
+    </section>
+
+    <footer class="foot">
+      <div class="s">With love,<br>Bhavana &amp; Sri Teja</div>
+      <p>and our families</p>
+      <div class="te">ధన్యవాదాలు</div>
+    </footer>
+  </main>
+</div>
+
+<script>
+/* ============ EDIT THESE DETAILS ============ */
+var CONFIG = {
+  whatsapp: "",            // WhatsApp Community invite link, e.g. https://chat.whatsapp.com/xxxx
+  album: "",               // Shared photo album link
+  wifiName: "To be added",
+  wifiPass: "To be added",
+  checkin: "Wed, 2 Dec · 3:30 PM",
+  checkout: "Thu, 3 Dec · 2:00 PM",
+  contacts: [              // name, role, phone
+    ["Help desk", "Rooms, keys, anything at all", "+91 ----- -----"],
+    ["Bride's family", "Coordinator", "+91 ----- -----"],
+    ["Groom's family", "Coordinator", "+91 ----- -----"]
+  ],
+  rooms: {                 // room number -> name shown under "Welcome". Leave a room out for the common greeting.
+    "204": "Ramaiah garu & family"
+  }
+};
+/* ============================================ */
+
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var COMMON = "Our dear family & friends";
+
+  // Room from ?room=204 (hosted site) or #room-204
+  var room = "";
+  try { room = new URLSearchParams(location.search).get("room") || ""; } catch(e){}
+  var h = (location.hash || "").match(/^#room-([A-Za-z0-9]+)$/);
+  if (h) room = h[1];
+  function applyRoom(){
+    var hm = (location.hash || "").match(/^#room-([A-Za-z0-9]+)$/);
+    if (hm) room = hm[1];
+    $("who").textContent = (room && CONFIG.rooms[room]) || COMMON;
+    if (room) { $("room-no").textContent = room; $("room-chip").hidden = false; }
+    else { $("room-chip").hidden = true; }
+  }
+  window.addEventListener("hashchange", applyRoom);
+  applyRoom();
+
+  // Details
+  $("wifi-name").textContent = CONFIG.wifiName;
+  $("wifi-pass").textContent = CONFIG.wifiPass;
+  $("checkin").textContent = CONFIG.checkin;
+  $("checkout").textContent = CONFIG.checkout;
+  if (CONFIG.whatsapp) $("wa-link").href = CONFIG.whatsapp;
+  else $("wa-link").addEventListener("click", function(e){ e.preventDefault(); });
+  if (CONFIG.album) $("album").href = CONFIG.album;
+  else $("album").addEventListener("click", function(e){ e.preventDefault(); });
+  $("wifi-copy").addEventListener("click", function(){
+    var b = this, t = CONFIG.wifiPass;
+    try { navigator.clipboard.writeText(t).then(function(){ b.textContent = "Copied"; }, function(){ b.textContent = t; }); }
+    catch(e){ b.textContent = t; }
+  });
+  CONFIG.contacts.forEach(function(c){
+    var d = document.createElement("div"); d.className = "p";
+    d.innerHTML = '<div><b></b><span></span></div><a class="num"></a>';
+    d.querySelector("b").textContent = c[0];
+    d.querySelector("span").textContent = c[1];
+    var a = d.querySelector("a"); a.textContent = c[2]; a.href = "tel:" + c[2].replace(/[^+\d]/g, "");
+    $("help").appendChild(d);
+  });
+
+  // Events, minutes after 2 Dec 2026 00:00 IST
+  function m(day,hh,mm){ return (day-2)*1440 + hh*60 + mm; }
+  var EVENTS = [
+    {d:2, s:m(2,15,30), e:m(2,17,0),  t:"3:30 PM",  n:"Check-in", ds:"Rooms ready, welcome at the reception"},
+    {d:2, s:m(2,17,0),  e:m(2,19,0),  t:"5:00 – 7:00 PM", n:"Edurukollu", ds:"Welcoming the groom's family"},
+    {d:2, s:m(2,19,30), e:m(2,23,30), t:"7:30 – 11:30 PM", n:"Sangeeth", ds:"Music, dance and performances"},
+    {d:2, s:m(2,20,0),  e:m(2,22,30), t:"8:00 PM", n:"Dinner", ds:"Served during the Sangeeth", side:true},
+    {d:3, s:m(3,5,0),   e:m(3,7,30),  t:"5:00 AM", n:"Snathakam", ds:"The groom's ritual before the wedding"},
+    {d:3, s:m(3,7,30),  e:m(3,8,40),  t:"7:30 AM", n:"Breakfast", ds:"Dining hall"},
+    {d:3, s:m(3,8,40),  e:m(3,11,45), t:"8:56 AM", n:"Sumuhurtham", ds:"The wedding", key:true},
+    {d:3, s:m(3,14,0),  e:m(3,14,1),  t:"2:00 PM", n:"Check-out", ds:"Please leave your room keys at the help desk"},
+    {d:3, s:m(3,12,0),  e:m(3,14,30), t:"12:00 PM", n:"Lunch", ds:"Dining hall"}
+  ];
+  var MUH = m(3,8,56);
+  var BASE = Date.UTC(2026,11,1,18,30); // 2 Dec 2026 00:00 IST
+
+  function nowMin(){ return Math.floor((Date.now() - BASE) / 60000); }
+  function istLabel(){
+    try { return new Intl.DateTimeFormat("en-IN",{timeZone:"Asia/Kolkata",day:"numeric",month:"short",hour:"numeric",minute:"2-digit"}).format(new Date()); }
+    catch(e){ return ""; }
+  }
+  function span(mins){
+    var d = Math.floor(mins/1440), h = Math.floor((mins%1440)/60), mi = mins%60;
+    if (d > 0) return d + (d===1?" day ":" days ") + h + " h";
+    if (h > 0) return h + " h " + mi + " min";
+    return mi + " min";
+  }
+
+  function render(){
+    var now = nowMin();
+    $("now-clock").textContent = istLabel();
+    var main = EVENTS.filter(function(e){ return !e.side; });
+    var live = main.filter(function(e){ return now >= e.s && now < e.e; });
+    var up = main.filter(function(e){ return e.s > now; });
+    var cur = live[live.length-1];
+    var lbl = $("now-lbl");
+    if (cur) {
+      lbl.textContent = "Happening now"; lbl.className = "pulse";
+      $("now-ev").textContent = cur.n;
+      var din = EVENTS[3];
+      $("now-when").textContent = cur.t + (cur.n === "Sangeeth" && now >= din.s && now < din.e ? " · Dinner is being served" : "");
+    } else if (up[0]) {
+      var u = up.shift();
+      lbl.textContent = "Up next"; lbl.className = "";
+      $("now-ev").textContent = u.n;
+      $("now-when").textContent = (u.d === 2 ? "Wed, 2 Dec" : "Thu, 3 Dec") + " · " + u.t + " · in " + span(u.s - now);
+    } else {
+      lbl.textContent = "Thank you"; lbl.className = "";
+      $("now-ev").textContent = "Thank you for coming";
+      $("now-when").textContent = "Safe travels home. We'll cherish these days.";
+    }
+    var nx = up[0], nb = $("now-next"); nb.innerHTML = "";
+    if (nx) {
+      var b = document.createElement("b"); b.textContent = "Then: ";
+      nb.appendChild(b);
+      nb.appendChild(document.createTextNode(nx.n + " · " + (nx.d === 2 ? "2 Dec" : "3 Dec") + ", " + nx.t));
+    } else if (cur || now < m(3,14,30)) {
+      nb.textContent = "Please leave your room keys at the help desk when you check out.";
+    } else { nb.hidden = true; }
+
+    var cd = $("cd"); cd.innerHTML = "";
+    var left = MUH - now;
+    if (left > 0) {
+      [[Math.floor(left/1440),"days"],[Math.floor((left%1440)/60),"hours"],[left%60,"mins"]].forEach(function(p){
+        var el = document.createElement("div"); el.innerHTML = "<b>" + p[0] + "</b><span>" + p[1] + "</span>"; cd.appendChild(el);
+      });
+    } else {
+      var el = document.createElement("div"); el.style.padding = "8px 18px"; el.innerHTML = "<b style='font-size:24px'>Married!</b>"; cd.appendChild(el);
+      $("muh-note").textContent = "Thank you for your blessings.";
+      $("muh-note").hidden = false;
+    }
+
+    [2,3].forEach(function(day){
+      var ol = $("tl-" + day); ol.innerHTML = "";
+      EVENTS.filter(function(e){ return e.d === day; }).forEach(function(e){
+        var li = document.createElement("li");
+        var cls = [];
+        if (now >= e.e) cls.push("past"); else if (now >= e.s && !e.side) cls.push("live");
+        if (e.key) cls.push("key");
+        li.className = cls.join(" ");
+        li.innerHTML = '<span class="tm"></span><div><div class="nm"></div><div class="ds"></div></div>';
+        li.querySelector(".tm").textContent = e.t.replace(" – ", "–");
+        li.querySelector(".nm").textContent = e.n;
+        li.querySelector(".ds").textContent = e.ds;
+        ol.appendChild(li);
+      });
+    });
+  }
+  render();
+  setInterval(render, 30000);
+})();
+</script>
+</body>
+</html>
