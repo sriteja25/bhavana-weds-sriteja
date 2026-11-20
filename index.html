@@ -96,6 +96,8 @@ button{font:inherit}
 .tl .tm{font-size:13.5px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
 .tl .tm small{display:block;font-size:12px;font-weight:600;color:var(--ink-soft)}
 .tl .nm{font-weight:700}
+.tl .at{font-size:12.5px;font-weight:700;color:var(--gold);letter-spacing:.02em;margin-top:1px}
+.tl .at::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:6px;vertical-align:2px}
 .tl .ds{font-size:13px;color:var(--ink-soft)}
 .tl li.past{opacity:.45}
 .tl li.live{background:var(--rose-soft)}
@@ -190,15 +192,6 @@ button{font:inherit}
     <div class="sh"><h2>Need anything?</h2></div>
     <section class="help" id="help"></section>
 
-    <div class="sh"><h2>Our story so far</h2></div>
-    <section class="story">
-      <img class="big" src="img/rings.jpg" alt="Bhavana and Sri Teja at their engagement, with the rings">
-      <div class="pair">
-        <img src="img/couple.jpg" alt="Bhavana and Sri Teja at the engagement" style="flex:665 1 0">
-        <img src="img/casual.jpg" alt="Bhavana and Sri Teja together" style="flex:750 1 0">
-      </div>
-    </section>
-
     <footer class="foot">
       <div class="s">With love,<br>Bhavana &amp; Sri Teja</div>
       <p>and our families</p>
@@ -257,13 +250,13 @@ var CONFIG = {
   function m(day,hh,mm){ return (day-2)*1440 + hh*60 + mm; }
   var EVENTS = [
     {d:2, s:m(2,15,30), e:m(2,17,0),  t:"3:30 PM", n:"Check-in", ds:"Settle in, relax and get ready for the evening"},
-    {d:2, s:m(2,17,0),  e:m(2,19,0),  t:"5:00 PM", till:"7:00 PM", n:"Edurukollu", ds:"A traditional ceremony welcoming the groom's family"},
-    {d:2, s:m(2,19,30), e:m(2,23,30), t:"7:30 PM", till:"11:30 PM", n:"Sangeeth", ds:"Music, dance and performances"},
-    {d:2, s:m(2,20,0),  e:m(2,22,30), t:"8:00 PM", n:"Dinner", ds:"Served in the dinner hall downstairs", side:true},
-    {d:3, s:m(3,5,0),   e:m(3,7,30),  t:"5:00 AM", n:"Snathakam", ds:"Followed by Kashi Yatra"},
-    {d:3, s:m(3,7,30),  e:m(3,8,40),  t:"7:30 AM", n:"Breakfast", ds:"A warm breakfast in the dinner hall downstairs"},
-    {d:3, s:m(3,8,40),  e:m(3,11,45), t:"8:56 AM", n:"Sumuhurtham", ds:"The wedding. Your blessings mean everything to us", key:true},
-    {d:3, s:m(3,12,0),  e:m(3,14,0),  t:"12:00 PM", n:"Lunch", ds:"Wedding lunch in the dinner hall downstairs"},
+    {d:2, s:m(2,17,0),  e:m(2,19,0),  t:"5:00 PM", till:"7:00 PM", n:"Edurukollu", at:"Gardens", ds:"A traditional ceremony welcoming the groom's family"},
+    {d:2, s:m(2,19,30), e:m(2,23,30), t:"7:30 PM", till:"11:30 PM", n:"Sangeeth", at:"Function Hall 1", ds:"Music, dance and performances"},
+    {d:2, s:m(2,20,0),  e:m(2,22,30), t:"8:00 PM", n:"Dinner", at:"Dining hall, downstairs", ds:"Served through the Sangeeth evening", side:true},
+    {d:3, s:m(3,5,0),   e:m(3,7,30),  t:"5:00 AM", n:"Snathakam", at:"Function Hall 1", ds:"Followed by Kashi Yatra"},
+    {d:3, s:m(3,7,30),  e:m(3,8,40),  t:"7:30 AM", n:"Breakfast", at:"Dining hall, downstairs", ds:"A warm breakfast before the big moment"},
+    {d:3, s:m(3,8,40),  e:m(3,11,45), t:"8:56 AM", n:"Sumuhurtham", at:"Function Hall 1", ds:"The wedding. Your blessings mean everything to us", key:true},
+    {d:3, s:m(3,12,0),  e:m(3,14,0),  t:"12:00 PM", n:"Lunch", at:"Dining hall, downstairs", ds:"The wedding feast"},
     {d:3, s:m(3,14,0),  e:m(3,14,1),  t:"2:00 PM", n:"Check-out", ds:"Thank you for being with us. Please reach home safely"}
   ];
   var MUH = m(3,8,56);
@@ -293,12 +286,12 @@ var CONFIG = {
       lbl.textContent = "Happening now"; lbl.className = "pulse";
       $("now-ev").textContent = cur.n;
       var din = EVENTS[3];
-      $("now-when").textContent = cur.t + (cur.till ? " – " + cur.till : "") + (cur.n === "Sangeeth" && now >= din.s && now < din.e ? " · Dinner is being served" : "");
+      $("now-when").textContent = cur.t + (cur.till ? " – " + cur.till : "") + (cur.at ? " · " + cur.at : "") + (cur.n === "Sangeeth" && now >= din.s && now < din.e ? " · Dinner is being served" : "");
     } else if (up[0]) {
       var u = up.shift();
       lbl.textContent = "Up next"; lbl.className = "";
       $("now-ev").textContent = u.n;
-      $("now-when").textContent = (u.d === 2 ? "Wed, 2 Dec" : "Thu, 3 Dec") + " · " + u.t + (u.till ? " – " + u.till : "") + " · in " + span(u.s - now);
+      $("now-when").textContent = (u.d === 2 ? "Wed, 2 Dec" : "Thu, 3 Dec") + " · " + u.t + (u.till ? " – " + u.till : "") + (u.at ? " · " + u.at : "") + " · in " + span(u.s - now);
     } else {
       lbl.textContent = "Thank you"; lbl.className = "";
       $("now-ev").textContent = "Thank you for coming";
@@ -333,7 +326,8 @@ var CONFIG = {
         if (now >= e.e) cls.push("past"); else if (now >= e.s && !e.side) cls.push("live");
         if (e.key) cls.push("key");
         li.className = cls.join(" ");
-        li.innerHTML = '<span class="tm"></span><div><div class="nm"></div><div class="ds"></div></div>';
+        li.innerHTML = '<span class="tm"></span><div><div class="nm"></div><div class="at" hidden></div><div class="ds"></div></div>';
+        if (e.at) { var at = li.querySelector(".at"); at.textContent = e.at; at.hidden = false; }
         li.querySelector(".tm").textContent = e.t;
         if (e.till) { var tl = document.createElement("small"); tl.textContent = "till " + e.till; li.querySelector(".tm").appendChild(tl); }
         li.querySelector(".nm").textContent = e.n;
